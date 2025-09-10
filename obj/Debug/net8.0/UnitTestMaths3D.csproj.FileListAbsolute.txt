@@ -1,0 +1,5 @@
+C:\Users\coren\Documents\IIM\A4\Math3D\UnitTestMaths3D\UnitTestMaths3D\obj\Debug\net8.0\UnitTestMaths3D.csproj.AssemblyReference.cache
+C:\Users\coren\Documents\IIM\A4\Math3D\UnitTestMaths3D\UnitTestMaths3D\obj\Debug\net8.0\UnitTestMaths3D.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\coren\Documents\IIM\A4\Math3D\UnitTestMaths3D\UnitTestMaths3D\obj\Debug\net8.0\UnitTestMaths3D.AssemblyInfoInputs.cache
+C:\Users\coren\Documents\IIM\A4\Math3D\UnitTestMaths3D\UnitTestMaths3D\obj\Debug\net8.0\UnitTestMaths3D.AssemblyInfo.cs
+C:\Users\coren\Documents\IIM\A4\Math3D\UnitTestMaths3D\UnitTestMaths3D\obj\Debug\net8.0\UnitTestMaths3D.csproj.CoreCompileInputs.cache

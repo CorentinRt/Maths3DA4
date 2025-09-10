@@ -53,4 +53,59 @@ public class MatrixInt()
         get => this.Matrix[i, j];
         set => this.Matrix[i, j] = value;
     }
+
+    public static MatrixInt Identity(int size)
+    {
+        MatrixInt identity = new MatrixInt(size, size);
+        
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                if (j == i)
+                {
+                    identity[i, j] = 1;
+                }
+                else
+                {
+                    identity[i, j] = 0;
+                }
+            }
+        }
+
+        return identity;
+    }
+
+    public bool IsIdentity()
+    {
+        bool isIdentity = true;
+
+        if (this.NbColumns != this.NbLines)
+            return false;
+        
+        for (int i = 0; i < NbLines; i++)
+        {
+            for (int j = 0; j < NbColumns; j++)
+            {
+                if (j == i)
+                {
+                    if (Matrix[i, j] != 1)
+                    {
+                        isIdentity = false;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (Matrix[i, j] != 0)
+                    {
+                        isIdentity = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return isIdentity;
+    }
 }

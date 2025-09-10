@@ -6,6 +6,7 @@
       &lt;TestId&gt;NUnit3x::99DE6882-EA4F-989B-A66D-927C67338618::net8.0::Maths_Matrices.Tests.Tests02_CopyAndModifyMatrices.TestModifyMatrix&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;NUnit3x::99DE6882-EA4F-989B-A66D-927C67338618::net8.0::Maths_Matrices.Tests.Tests02_CopyAndModifyMatrices.TestCopyAndChangeMatrices&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;NUnit3x::99DE6882-EA4F-989B-A66D-927C67338618::net8.0::Maths_Matrices.Tests.Tests02_CopyAndModifyMatrices&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::99DE6882-EA4F-989B-A66D-927C67338618::net8.0::Maths_Matrices.Tests.Tests03_IdentityMatrices.TestGenerateIdentityMatrices&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

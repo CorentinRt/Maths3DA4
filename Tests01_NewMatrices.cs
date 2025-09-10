@@ -1,4 +1,4 @@
-﻿// Corentin Remot //
+﻿// Corentin Remot
 
 using NUnit.Framework;
 using UnitTestMaths3D;

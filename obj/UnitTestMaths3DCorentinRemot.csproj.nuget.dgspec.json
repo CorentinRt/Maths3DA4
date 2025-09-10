@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Corentin\\OneDrive\\Documents\\IIM\\A4\\EntrainementsMaths3D\\repo\\Maths3DA4\\UnitTestMaths3D.csproj": {}
+    "C:\\Users\\Corentin\\OneDrive\\Documents\\IIM\\A4\\EntrainementsMaths3D\\repo\\Maths3DA4\\UnitTestMaths3DCorentinRemot.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Corentin\\OneDrive\\Documents\\IIM\\A4\\EntrainementsMaths3D\\repo\\Maths3DA4\\UnitTestMaths3D.csproj": {
+    "C:\\Users\\Corentin\\OneDrive\\Documents\\IIM\\A4\\EntrainementsMaths3D\\repo\\Maths3DA4\\UnitTestMaths3DCorentinRemot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Corentin\\OneDrive\\Documents\\IIM\\A4\\EntrainementsMaths3D\\repo\\Maths3DA4\\UnitTestMaths3D.csproj",
-        "projectName": "UnitTestMaths3D",
-        "projectPath": "C:\\Users\\Corentin\\OneDrive\\Documents\\IIM\\A4\\EntrainementsMaths3D\\repo\\Maths3DA4\\UnitTestMaths3D.csproj",
+        "projectUniqueName": "C:\\Users\\Corentin\\OneDrive\\Documents\\IIM\\A4\\EntrainementsMaths3D\\repo\\Maths3DA4\\UnitTestMaths3DCorentinRemot.csproj",
+        "projectName": "UnitTestMaths3DCorentinRemot",
+        "projectPath": "C:\\Users\\Corentin\\OneDrive\\Documents\\IIM\\A4\\EntrainementsMaths3D\\repo\\Maths3DA4\\UnitTestMaths3DCorentinRemot.csproj",
         "packagesPath": "C:\\Users\\Corentin\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Corentin\\OneDrive\\Documents\\IIM\\A4\\EntrainementsMaths3D\\repo\\Maths3DA4\\obj\\",
         "projectStyle": "PackageReference",

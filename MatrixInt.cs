@@ -2,67 +2,57 @@
 
 namespace UnitTestMaths3D;
 
-public class MatrixInt()
+public class MatrixInt
 {
-    public MatrixInt(int nbLines, int nbColumns) : this()
-    {
-        this.NbLines = nbLines;
-        this.NbColumns = nbColumns;
+    public int NbLines = 0;
+    public int NbColumns = 0;
 
-        this.Matrix = new int[this.NbLines, this.NbColumns];
-    }
-
-    public MatrixInt(int[,] matrix) : this()
-    {
-        this.Matrix = matrix;
-        
-        this.NbLines = matrix.GetLength(0);
-        this.NbColumns = matrix.GetLength(1);
-    }
-
-    public MatrixInt(MatrixInt m) : this()
-    {
-        int[,] copiedMatrix = new  int[m.NbLines, m.NbColumns];
-        
-        for (int i = 0; i < m.NbLines; i++)
-        {
-            for (int j = 0; j < m.NbColumns; j++)
-            {
-                copiedMatrix[i, j] = m[i, j];
-            }
-        }
-
-        this.Matrix = copiedMatrix;
-        
-        this.NbLines = m.NbLines;
-        this.NbColumns = m.NbColumns;
-    }
+    public int[,] matrix;
     
-    public int NbLines;
-    public int NbColumns;
-
-    public int[,] Matrix;
-    
-    public int[,] ToArray2D()
+    public MatrixInt(int lines, int columns)
     {
-        return Matrix;
+        this.NbLines = lines;
+        this.NbColumns = columns;
+        
+        matrix = new int[lines, columns];
+    }
+
+    public MatrixInt(int[,] m)
+    {
+        this.NbLines = m.GetLength(0);
+        this.NbColumns = m.GetLength(1);
+        
+        this.matrix = m;
+    }
+
+    public MatrixInt(MatrixInt m)
+    {
+        this.NbLines = m.matrix.GetLength(0);
+        this.NbColumns = m.matrix.GetLength(1);
+        
+        this.matrix = m.matrix.Clone() as int[,];
     }
     
     public int this[int i, int j]
     {
-        get => this.Matrix[i, j];
-        set => this.Matrix[i, j] = value;
+        get =>  this.matrix[i, j];
+        set =>  this.matrix[i, j] = value;
+    }
+    
+    public int[,] ToArray2D()
+    {
+        return matrix;
     }
 
     public static MatrixInt Identity(int size)
     {
         MatrixInt identity = new MatrixInt(size, size);
-        
+
         for (int i = 0; i < size; i++)
         {
             for (int j = 0; j < size; j++)
             {
-                if (j == i)
+                if (i == j)
                 {
                     identity[i, j] = 1;
                 }
@@ -72,144 +62,130 @@ public class MatrixInt()
                 }
             }
         }
-
+        
         return identity;
     }
 
     public bool IsIdentity()
     {
-        bool isIdentity = true;
-
-        if (this.NbColumns != this.NbLines)
+        if (NbLines != NbColumns)
             return false;
         
         for (int i = 0; i < NbLines; i++)
         {
             for (int j = 0; j < NbColumns; j++)
             {
-                if (j == i)
+                if (i == j)
                 {
-                    if (Matrix[i, j] != 1)
-                    {
-                        isIdentity = false;
-                        break;
-                    }
+                    if (matrix[i, j] != 1)
+                        return false;
                 }
                 else
                 {
-                    if (Matrix[i, j] != 0)
-                    {
-                        isIdentity = false;
-                        break;
-                    }
+                    if (matrix[i, j] != 0)
+                        return false;
                 }
             }
         }
 
-        return isIdentity;
+        return true;
     }
 
     public void Multiply(int value)
     {
-        for (int i = 0; i < this.NbLines; i++)
+        for (int i = 0; i < NbLines; i++)
         {
-            for (int j = 0; j < this.NbColumns; j++)
+            for (int j = 0; j < NbColumns; j++)
             {
-                Matrix[i, j] = this.Matrix[i, j] * value;
+                this.matrix[i, j] *= value;
             }
         }
+    }
+
+    public static MatrixInt Multiply(MatrixInt m1, int value)
+    {
+        MatrixInt result =  new MatrixInt(m1);
+
+        result.Multiply(value);
+        
+        return result;
     }
     
-    public static MatrixInt Multiply(MatrixInt matrix, int value)
+    public static MatrixInt operator *(MatrixInt m, int value)
     {
-        MatrixInt m = new MatrixInt(matrix.NbLines, matrix.NbColumns);
+        return MatrixInt.Multiply(m, value);
+    }
+    public static MatrixInt operator *(int value, MatrixInt m)
+    {
+        return MatrixInt.Multiply(m, value);
+    }
+    public static MatrixInt operator -(MatrixInt m)
+    {
+        return MatrixInt.Multiply(m, -1);
+    }
 
-        for (int i = 0; i < matrix.NbLines; i++)
+    public void Add(MatrixInt m)
+    {
+        if (this.NbLines != m.NbLines || this.NbColumns != m.NbColumns)
         {
-            for (int j = 0; j < matrix.NbColumns; j++)
-            {
-                m[i, j] = matrix.Matrix[i, j] * value;
-            }
+            throw new MatrixSumException("Can't add matrix. Size don't match !");
         }
 
-        return m;
-    }
-
-    public static MatrixInt operator * (MatrixInt matrix, int value)
-    {
-        return Multiply(matrix, value);
-    }
-    public static MatrixInt operator * (int value, MatrixInt matrix)
-    {
-        return Multiply(matrix, value);
-    }
-    public static MatrixInt operator - (MatrixInt matrix)
-    {
-        return Multiply(matrix, -1);
-    }
-
-    public void Add(MatrixInt m2)
-    {
-        if (NbLines != m2.NbLines || NbColumns != m2.NbColumns)
+        for (int i = 0; i < NbLines; i++)
         {
-            throw new MatrixSumException("Cannot add another MatrixInt because not same size");
-        }
-        
-        if (NbColumns != m2.NbColumns)
-            return;
-
-        for (int i = 0; i < Matrix.GetLength(0); i++)
-        {
-            for (int j = 0; j < Matrix.GetLength(1); j++)
+            for (int j = 0; j < NbColumns; j++)
             {
-                Matrix[i, j] += m2.Matrix[i, j];
+                this.matrix[i, j] +=  m[i, j];
             }
         }
     }
 
     public static MatrixInt Add(MatrixInt m1, MatrixInt m2)
     {
+        if (m1.NbLines != m2.NbLines || m1.NbColumns != m2.NbColumns)
+        {
+            throw new MatrixSumException("Can't add matrix. Size don't match !");
+        }
+        
         MatrixInt result = new MatrixInt(m1);
 
         result.Add(m2);
-
+        
         return result;
     }
-    
-    public static MatrixInt operator + (MatrixInt m1, MatrixInt m2)
+
+    public static MatrixInt operator +(MatrixInt m1, MatrixInt m2)
     {
-        return Add(m1, m2);
+        return MatrixInt.Add(m1, m2);
     }
-    public static MatrixInt operator - (MatrixInt m1, MatrixInt m2)
+
+    public static MatrixInt operator -(MatrixInt m1,  MatrixInt m2)
     {
-        return Add(m1, -m2);
+        return MatrixInt.Add(m1, -m2);
     }
 
     public MatrixInt Multiply(MatrixInt m2)
     {
+        if (this.NbColumns != m2.NbLines)
+            throw new MatrixMultiplyException("Can't multiply matrix. Columns of m1 don't match lines of m2 !");
+
         MatrixInt result = new MatrixInt(this.NbLines, m2.NbColumns);
 
-        if (this.NbColumns != m2.NbLines)
-        {
-            throw new MatrixMultiplyException("Cannot multiply another MatrixInt m1 column and m2 row don't match");
-        }
-
         for (int i = 0; i < this.NbLines; i++)
-        { 
-            
+        {
             for (int j = 0; j < m2.NbColumns; j++)
             {
                 int tempValue = 0;
                 
-                for (int k = 0; k < this.NbColumns; k++)
+                for (int k = 0; k < m2.NbLines; k++)
                 {
-                    tempValue += this.Matrix[i, k] * m2.Matrix[k, j];
+                    tempValue += this.matrix[i, k] * m2.matrix[k, j];
                 }
-                
-                result.Matrix[i, j] = tempValue;
+
+                result.matrix[i, j] = tempValue;
             }
         }
-        
+
         return result;
     }
 
@@ -217,47 +193,25 @@ public class MatrixInt()
     {
         MatrixInt result = new MatrixInt(m1);
         
-        result = result.Multiply(m2);
-        
-        return result;
+        return result.Multiply(m2);
     }
     
-    public static MatrixInt operator * (MatrixInt m1, MatrixInt m2)
+    public static MatrixInt operator *(MatrixInt m1, MatrixInt m2)
     {
-        return Multiply(m1, m2);
+        return MatrixInt.Multiply(m1, m2);
     }
 }
 
 public class MatrixSumException : Exception
 {
-    public MatrixSumException()
-    {
-    }
-    public MatrixSumException(string message)
-    : base(message)
-    {
-    }
-
-    public MatrixSumException(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
+    public MatrixSumException() : base() { }
+    public MatrixSumException(string message) : base(message) { }
+    public MatrixSumException(string message, Exception inner) : base(message, inner) { }
 }
 
 public class MatrixMultiplyException : Exception
 {
-    public MatrixMultiplyException()
-    {
-    }
-    public MatrixMultiplyException(string message)
-        : base(message)
-    {
-    }
-
-    public MatrixMultiplyException(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
+    public MatrixMultiplyException() : base() { }
+    public MatrixMultiplyException(string message) : base(message) { }
+    public MatrixMultiplyException(string message, Exception inner) : base(message, inner) { }
 }
-
-

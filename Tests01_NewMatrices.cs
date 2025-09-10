@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿// Corentin Remot //
+
+using NUnit.Framework;
 using UnitTestMaths3D;
 // ReSharper disable All
 
@@ -47,15 +49,15 @@ namespace Maths_Matrices.Tests
 
             //See Indexers Documentation =>
             //https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/indexers/
-            Assert.AreEqual(1, m[0, 0]);
-            Assert.AreEqual(2, m[0, 1]);
-            Assert.AreEqual(3, m[0, 2]);
-            Assert.AreEqual(4, m[1, 0]);
-            Assert.AreEqual(5, m[1, 1]);
-            Assert.AreEqual(6, m[1, 2]);
-            Assert.AreEqual(7, m[2, 0]);
-            Assert.AreEqual(8, m[2, 1]);
-            Assert.AreEqual(9, m[2, 2]);
+            Assert.That(m[0, 0], Is.EqualTo(1));
+            Assert.That(m[0, 1], Is.EqualTo(2));
+            Assert.That(m[0, 2], Is.EqualTo(3));
+            Assert.That(m[1, 0], Is.EqualTo(4));
+            Assert.That(m[1, 1], Is.EqualTo(5));
+            Assert.That(m[1, 2], Is.EqualTo(6));
+            Assert.That(m[2, 0], Is.EqualTo(7));
+            Assert.That(m[2, 1], Is.EqualTo(8));
+            Assert.That(m[2, 2], Is.EqualTo(9));
         }
     }
 }

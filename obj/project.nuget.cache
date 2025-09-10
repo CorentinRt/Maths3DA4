@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TRWievwp0y4=",
+  "dgSpecHash": "cvi7qCLYNQ8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\UnitTestMaths3D\\UnitTestMaths3D.csproj",
+  "projectFilePath": "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\Maths3DA4Repo\\UnitTestMaths3D.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\coren\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\coren\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",

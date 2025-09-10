@@ -1,4 +1,6 @@
-﻿namespace UnitTestMaths3D;
+﻿// Corentin Remot //
+
+namespace UnitTestMaths3D;
 
 public struct MatrixInt
 {
@@ -26,5 +28,11 @@ public struct MatrixInt
     public int[,] ToArray2D()
     {
         return Matrix;
+    }
+    
+    public int this[int i, int j]
+    {
+        get => this.Matrix[i, j];
+        set => this.Matrix[i, j] = value;
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\UnitTestMaths3D\\UnitTestMaths3D.csproj": {}
+    "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\Maths3DA4Repo\\UnitTestMaths3D.csproj": {}
   },
   "projects": {
-    "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\UnitTestMaths3D\\UnitTestMaths3D.csproj": {
+    "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\Maths3DA4Repo\\UnitTestMaths3D.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\UnitTestMaths3D\\UnitTestMaths3D.csproj",
+        "projectUniqueName": "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\Maths3DA4Repo\\UnitTestMaths3D.csproj",
         "projectName": "UnitTestMaths3D",
-        "projectPath": "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\UnitTestMaths3D\\UnitTestMaths3D.csproj",
+        "projectPath": "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\Maths3DA4Repo\\UnitTestMaths3D.csproj",
         "packagesPath": "C:\\Users\\coren\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\UnitTestMaths3D\\obj\\",
+        "outputPath": "C:\\Users\\coren\\Documents\\IIM\\A4\\Math3D\\UnitTestMaths3D\\Maths3DA4Repo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\coren\\AppData\\Roaming\\NuGet\\NuGet.Config",

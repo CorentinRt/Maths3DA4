@@ -108,4 +108,44 @@ public class MatrixInt()
 
         return isIdentity;
     }
+
+    public void Multiply(int value)
+    {
+        for (int i = 0; i < this.NbLines; i++)
+        {
+            for (int j = 0; j < this.NbColumns; j++)
+            {
+                Matrix[i, j] = this.Matrix[i, j] * value;
+            }
+        }
+    }
+    
+    public static MatrixInt Multiply(MatrixInt matrix, int value)
+    {
+        MatrixInt m = new MatrixInt(matrix.NbLines, matrix.NbColumns);
+
+        for (int i = 0; i < matrix.NbLines; i++)
+        {
+            for (int j = 0; j < matrix.NbColumns; j++)
+            {
+                m[i, j] = matrix.Matrix[i, j] * value;
+            }
+        }
+
+        return m;
+    }
+
+    public static MatrixInt operator * (MatrixInt matrix, int value)
+    {
+        return Multiply(matrix, value);
+    }
+    public static MatrixInt operator * (int value, MatrixInt matrix)
+    {
+        return Multiply(matrix, value);
+    }
+    public static MatrixInt operator - (MatrixInt matrix)
+    {
+        return Multiply(matrix, -1);
+    }
+    
 }

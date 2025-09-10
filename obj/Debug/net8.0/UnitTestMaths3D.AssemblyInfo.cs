@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UnitTestMaths3D")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52e5829896dd2cd4ba97e9b40d6fb634f91b71d0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a7c884331d7362dcac422c6c6fa838c47b94e85")]
 [assembly: System.Reflection.AssemblyProductAttribute("UnitTestMaths3D")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UnitTestMaths3D")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

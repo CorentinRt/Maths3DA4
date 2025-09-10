@@ -4,20 +4,20 @@ namespace UnitTestMaths3D;
 
 public class MatrixInt()
 {
-    public MatrixInt(int NbLines, int NbColumns) : this()
+    public MatrixInt(int nbLines, int nbColumns) : this()
     {
-        this.NbLines = NbLines;
-        this.NbColumns = NbColumns;
+        this.NbLines = nbLines;
+        this.NbColumns = nbColumns;
 
         this.Matrix = new int[this.NbLines, this.NbColumns];
     }
 
-    public MatrixInt(int[,] Matrix) : this()
+    public MatrixInt(int[,] matrix) : this()
     {
-        this.Matrix = Matrix;
+        this.Matrix = matrix;
         
-        this.NbLines = Matrix.GetLength(0);
-        this.NbColumns = Matrix.GetLength(1);
+        this.NbLines = matrix.GetLength(0);
+        this.NbColumns = matrix.GetLength(1);
     }
 
     public MatrixInt(MatrixInt m) : this()

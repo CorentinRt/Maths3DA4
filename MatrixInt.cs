@@ -147,5 +147,61 @@ public class MatrixInt()
     {
         return Multiply(matrix, -1);
     }
+
+    public void Add(MatrixInt m2)
+    {
+        if (NbLines != m2.NbLines || NbColumns != m2.NbColumns)
+        {
+            throw new MatrixSumException("Cannot add another MatrixInt because not same size");
+        }
+        
+        if (NbColumns != m2.NbColumns)
+            return;
+
+        for (int i = 0; i < Matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < Matrix.GetLength(1); j++)
+            {
+                Matrix[i, j] += m2.Matrix[i, j];
+            }
+        }
+    }
+
+    public static MatrixInt Add(MatrixInt m1, MatrixInt m2)
+    {
+        MatrixInt result = new MatrixInt(m1);
+
+        result.Add(m2);
+
+        return result;
+    }
+    
+    public static MatrixInt operator + (MatrixInt m1, MatrixInt m2)
+    {
+        return Add(m1, m2);
+    }
+    public static MatrixInt operator - (MatrixInt m1, MatrixInt m2)
+    {
+        return Add(m1, -m2);
+    }
+    
     
 }
+
+public class MatrixSumException : Exception
+{
+    public MatrixSumException()
+    {
+    }
+    public MatrixSumException(string message)
+    : base(message)
+    {
+    }
+
+    public MatrixSumException(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
+

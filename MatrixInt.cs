@@ -184,8 +184,48 @@ public class MatrixInt()
     {
         return Add(m1, -m2);
     }
+
+    public MatrixInt Multiply(MatrixInt m2)
+    {
+        MatrixInt result = new MatrixInt(this.NbLines, m2.NbColumns);
+
+        if (this.NbColumns != m2.NbLines)
+        {
+            throw new MatrixMultiplyException("Cannot multiply another MatrixInt m1 column and m2 row don't match");
+        }
+
+        for (int i = 0; i < this.NbLines; i++)
+        { 
+            
+            for (int j = 0; j < m2.NbColumns; j++)
+            {
+                int tempValue = 0;
+                
+                for (int k = 0; k < this.NbColumns; k++)
+                {
+                    tempValue += this.Matrix[i, k] * m2.Matrix[k, j];
+                }
+                
+                result.Matrix[i, j] = tempValue;
+            }
+        }
+        
+        return result;
+    }
+
+    public static MatrixInt Multiply(MatrixInt m1, MatrixInt m2)
+    {
+        MatrixInt result = new MatrixInt(m1);
+        
+        result = result.Multiply(m2);
+        
+        return result;
+    }
     
-    
+    public static MatrixInt operator * (MatrixInt m1, MatrixInt m2)
+    {
+        return Multiply(m1, m2);
+    }
 }
 
 public class MatrixSumException : Exception
@@ -199,6 +239,22 @@ public class MatrixSumException : Exception
     }
 
     public MatrixSumException(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
+public class MatrixMultiplyException : Exception
+{
+    public MatrixMultiplyException()
+    {
+    }
+    public MatrixMultiplyException(string message)
+        : base(message)
+    {
+    }
+
+    public MatrixMultiplyException(string message, Exception inner)
         : base(message, inner)
     {
     }

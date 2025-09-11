@@ -250,13 +250,13 @@ public class MatrixFloat
         
         MatrixFloat m2 = new MatrixFloat(this.NbLines, this.NbColumns - (value + 1));
 
-        for (int i = 0; i < m1.NbLines; i++)
+        for (int i = 0; i < this.NbLines; i++)
         {
-            for (int j = 0; j < m1.NbColumns; j++)
+            for (int j = 0; j < this.NbColumns; j++)
             {
                 if (j > value)
                 {
-                    m2[i, j - value] = this.matrix[i, j];
+                    m2[i, j - (value + 1)] = this.matrix[i, j];
                 }
                 else
                 {

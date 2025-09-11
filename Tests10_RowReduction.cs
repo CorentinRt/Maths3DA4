@@ -46,7 +46,6 @@ namespace Maths_Matrices.Tests
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
         }
 
-        /*
         [Test, DefaultFloatingPointTolerance(0.001f)]
         public void TestApplyRowReduction_Exercise()
         {
@@ -84,6 +83,5 @@ namespace Maths_Matrices.Tests
             }));
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
         }
-        */
     }
 }

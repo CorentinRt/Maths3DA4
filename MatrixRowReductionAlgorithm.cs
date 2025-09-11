@@ -8,49 +8,90 @@ public class MatrixRowReductionAlgorithm
     {
         MatrixFloat augmentedMatrix = MatrixFloat.GenerateAugmentedMatrix(m1, m2);
         
-        
-        // Apply algorithm
-
         int i = 0;
         int j = 0;
 
-        while (i < augmentedMatrix.NbLines - 1)
+        while (j < augmentedMatrix.NbColumns - 1)
         {
+            /*
+            Console.WriteLine($"Turn {i} !!");
+            Console.WriteLine($"i = {i} / j = {j} : matrix i j = {augmentedMatrix[i, j]}");
+            */
+            
             float highestValue = augmentedMatrix[i, j];
             int highestLine = i;
             
-            for (int k = i; k < augmentedMatrix.NbColumns; k++)
+            for (int k = i; k < augmentedMatrix.NbLines; k++)
             {
-                if (augmentedMatrix[i, k] > highestValue)
+                if (MathF.Abs(augmentedMatrix[k, j]) > highestValue)
                 {
-                    highestValue = augmentedMatrix[i, k];
+                    highestValue = MathF.Abs(augmentedMatrix[k, j]);
                     highestLine = k;
                 }
+            }
+
+            if (highestValue == 0)
+            {
+                j++;
+                i++;
+                continue;
             }
             
             if (highestLine != i)
             {
-                Console.WriteLine($"Try to swap line {i} to highest {highestLine}");
-                // ERROR INDEX OUT OF RANGE
+                //Console.WriteLine($"Swap line {i} to highest {highestLine}");
                 MatrixElementaryOperations.SwapLines(augmentedMatrix, highestLine, i);
             }
             
+            
+            //Console.WriteLine($"Multiply line {i} by {1f/augmentedMatrix[i, j]}");
             MatrixElementaryOperations.MultiplyLine(augmentedMatrix, i, (1f/augmentedMatrix[i, j]));
 
             for (int r = 0; r < augmentedMatrix.NbLines; r++)
             {
-                if (r != i)
+                if (r == i)
+                    continue;
+                
+                float factor = augmentedMatrix[r, j];
+                
+                for (int c = j; c < augmentedMatrix.NbColumns; c++)
                 {
-                    augmentedMatrix[r, j] += -augmentedMatrix[r, j] * augmentedMatrix[i, j];
+                    //Console.WriteLine($"At position {r}:{c} , Add {-factor} * {augmentedMatrix[i, c]} + {augmentedMatrix[r, c]} to result in {-augmentedMatrix[r, j] * augmentedMatrix[i, c] + augmentedMatrix[r, c]}");
+                    augmentedMatrix[r, c] += -factor * augmentedMatrix[i, c];
                 }
             }
             
             i++;
             j++;
         }
+
+        Console.WriteLine("-------------------------------------");
         
+        for (int y = 0; y < augmentedMatrix.NbLines; y++)
+        {
+            string toPrint = $"{y} : ";
+            for (int u = 0; u < augmentedMatrix.NbColumns; u++)
+            {
+                toPrint += $"{augmentedMatrix[y, u]} | ";
+            }
+            
+            Console.WriteLine(toPrint);
+        }
         
-        (MatrixFloat, MatrixFloat) result = augmentedMatrix.Split(augmentedMatrix.NbLines - 2);
+        (MatrixFloat, MatrixFloat) result = augmentedMatrix.Split(augmentedMatrix.NbColumns - 2);
+
+        Console.WriteLine($"-------------- result item 2 -----------------------");
+        
+        for (int y = 0; y < result.Item2.NbLines; y++)
+        {
+            string toPrint = $"{y} : ";
+            for (int u = 0; u < result.Item2.NbColumns; u++)
+            {
+                toPrint += $"{result.Item2[y, u]} | ";
+            }
+            
+            Console.WriteLine(toPrint);
+        }
         
         return  result;
     }

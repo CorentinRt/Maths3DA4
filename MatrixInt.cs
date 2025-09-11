@@ -200,6 +200,26 @@ public class MatrixInt
     {
         return MatrixInt.Multiply(m1, m2);
     }
+
+    public MatrixInt Transpose()
+    {
+        MatrixInt result = new MatrixInt(this.NbColumns, this.NbLines);
+
+        for (int i = 0; i < result.NbLines; i++)
+        {
+            for (int j = 0; j < result.NbColumns; j++)
+            {
+                result.matrix[i, j] = this.matrix[j, i];
+            }
+        }
+        
+        return result;
+    }
+
+    public static MatrixInt Transpose(MatrixInt m)
+    {
+        return m.Transpose();
+    }
 }
 
 public class MatrixSumException : Exception

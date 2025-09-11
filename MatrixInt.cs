@@ -220,6 +220,53 @@ public class MatrixInt
     {
         return m.Transpose();
     }
+
+
+    public static MatrixInt GenerateAugmentedMatrix(MatrixInt m1, MatrixInt m2)
+    {
+        MatrixInt result = new MatrixInt(m1.NbLines, m1.NbColumns + m2.NbColumns);
+
+        for (int i = 0; i < m1.NbLines; i++)
+        {
+            for (int j = 0; j <= m1.NbColumns; j++)
+            {
+                if (j == m1.NbColumns)
+                {
+                    result[i, j] = m2[i, 0];
+                }
+                else
+                {
+                    result[i, j] = m1[i, j];
+                }
+            }
+        }
+        
+        return result;
+    }
+
+    public (MatrixInt, MatrixInt) Split(int value)
+    {
+        MatrixInt m1 =  new MatrixInt(this.NbLines, value + 1);
+        
+        MatrixInt m2 = new MatrixInt(this.NbLines, this.NbColumns - (value + 1));
+
+        for (int i = 0; i < m1.NbLines; i++)
+        {
+            for (int j = 0; j < m1.NbColumns; j++)
+            {
+                if (j > value)
+                {
+                    m2[i, j - value] = this.matrix[i, j];
+                }
+                else
+                {
+                    m1[i, j] = this.matrix[i, j];
+                }
+            }
+        }
+        
+        return  (m1, m2);
+    }
 }
 
 public class MatrixSumException : Exception

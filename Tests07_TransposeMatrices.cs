@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿// Corentin Remot
+
+using NUnit.Framework;
 using UnitTestMaths3D;
 
 namespace Maths_Matrices.Tests

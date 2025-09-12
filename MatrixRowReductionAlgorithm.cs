@@ -33,7 +33,7 @@ public class MatrixRowReductionAlgorithm
             if (highestValue == 0)
             {
                 j++;
-                i++;
+                //i++;
                 continue;
             }
             

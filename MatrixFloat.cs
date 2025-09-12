@@ -298,6 +298,26 @@ public class MatrixFloat
         
         return result.InvertByRowReduction();
     }
+
+    public static MatrixFloat SubMatrix(MatrixFloat m, int line, int column)
+    {
+        MatrixFloat result = new MatrixFloat(m.NbLines - 1, m.NbColumns - 1);
+
+        int currentLine = 0;
+        int currentColumn = 0;
+        
+        for (int i = 0; i < m.NbLines; i++)
+        {
+            for (int j = 0; j < m.NbColumns; j++)
+            {
+                
+            }
+            
+            currentLine++;
+        }
+
+        return result;
+    }
 }
 
 public class MatrixInvertException : Exception

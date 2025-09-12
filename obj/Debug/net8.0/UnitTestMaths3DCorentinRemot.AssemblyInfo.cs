@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UnitTestMaths3DCorentinRemot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+090eb389ac19a40592832fddb00f6c88dc8a0f0b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2cf5ae1a3e71b470afff7e150da78304a729a77b")]
 [assembly: System.Reflection.AssemblyProductAttribute("UnitTestMaths3DCorentinRemot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UnitTestMaths3DCorentinRemot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

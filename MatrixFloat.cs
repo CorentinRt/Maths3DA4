@@ -228,16 +228,14 @@ public class MatrixFloat
 
         for (int i = 0; i < m1.NbLines; i++)
         {
-            for (int j = 0; j <= m1.NbColumns; j++)
+            for (int j = 0; j < m1.NbColumns; j++)
+            { 
+                result[i, j] = m1[i, j];
+            }
+
+            for (int j = 0; j < m2.NbColumns; j++)
             {
-                if (j == m1.NbColumns)
-                {
-                    result[i, j] = m2[i, 0];
-                }
-                else
-                {
-                    result[i, j] = m1[i, j];
-                }
+                result[i, m1.NbColumns + j] = m2[i, j];
             }
         }
         
@@ -267,4 +265,44 @@ public class MatrixFloat
         
         return  (m1, m2);
     }
+
+    public MatrixFloat InvertByRowReduction()
+    {
+        MatrixFloat identity = MatrixFloat.Identity(NbLines);
+
+        (MatrixFloat, MatrixFloat) reducted = MatrixRowReductionAlgorithm.Apply(this, identity);
+
+        for (int i = 0; i < reducted.Item1.NbLines; i++)
+        {
+            bool hasOnlyNull = true;
+            for (int j = 0; j < reducted.Item1.NbColumns; j++)
+            {
+                if (reducted.Item1[i, j] != 0f)
+                {
+                    hasOnlyNull = false;
+                }
+            }
+
+            if (hasOnlyNull)
+            {
+                throw new MatrixInvertException("Has only null values! Matrix can't be inverted !");
+            }
+        }
+        
+        return reducted.Item2;
+    }
+
+    public static MatrixFloat InvertByRowReduction(MatrixFloat m)
+    {
+        MatrixFloat result = new MatrixFloat(m);
+        
+        return result.InvertByRowReduction();
+    }
+}
+
+public class MatrixInvertException : Exception
+{
+    public MatrixInvertException() : base() { }
+    public MatrixInvertException(string message) : base(message) { }
+    public MatrixInvertException(string message, Exception inner) : base(message, inner) { }
 }

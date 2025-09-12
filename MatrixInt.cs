@@ -228,16 +228,14 @@ public class MatrixInt
 
         for (int i = 0; i < m1.NbLines; i++)
         {
-            for (int j = 0; j <= m1.NbColumns; j++)
+            for (int j = 0; j < m1.NbColumns; j++)
+            { 
+                result[i, j] = m1[i, j];
+            }
+
+            for (int j = 0; j < m2.NbColumns; j++)
             {
-                if (j == m1.NbColumns)
-                {
-                    result[i, j] = m2[i, 0];
-                }
-                else
-                {
-                    result[i, j] = m1[i, j];
-                }
+                result[i, m1.NbColumns + j] = m2[i, j];
             }
         }
         

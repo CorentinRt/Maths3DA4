@@ -11,7 +11,7 @@ public class MatrixRowReductionAlgorithm
         int i = 0;
         int j = 0;
 
-        while (j < augmentedMatrix.NbColumns - 1)
+        while (j < m1.NbColumns)
         {
             /*
             Console.WriteLine($"Turn {i} !!");
@@ -57,6 +57,7 @@ public class MatrixRowReductionAlgorithm
                 for (int c = j; c < augmentedMatrix.NbColumns; c++)
                 {
                     //Console.WriteLine($"At position {r}:{c} , Add {-factor} * {augmentedMatrix[i, c]} + {augmentedMatrix[r, c]} to result in {-augmentedMatrix[r, j] * augmentedMatrix[i, c] + augmentedMatrix[r, c]}");
+                    
                     augmentedMatrix[r, c] += -factor * augmentedMatrix[i, c];
                 }
             }
@@ -65,6 +66,7 @@ public class MatrixRowReductionAlgorithm
             j++;
         }
 
+        /*
         Console.WriteLine("-------------------------------------");
         
         for (int y = 0; y < augmentedMatrix.NbLines; y++)
@@ -77,8 +79,9 @@ public class MatrixRowReductionAlgorithm
             
             Console.WriteLine(toPrint);
         }
+        */
         
-        (MatrixFloat, MatrixFloat) result = augmentedMatrix.Split(augmentedMatrix.NbColumns - 2);
+        (MatrixFloat, MatrixFloat) result = augmentedMatrix.Split(m1.NbColumns - 1);
 
         Console.WriteLine($"-------------- result item 2 -----------------------");
         

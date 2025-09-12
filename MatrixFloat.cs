@@ -334,6 +334,30 @@ public class MatrixFloat
 
         return result;
     }
+
+    public static float Determinant(MatrixFloat m)
+    {
+        if (m.NbLines == 1)
+        {
+            return m[0, 0];
+        }
+        
+        if (m.NbLines == 2)
+        {
+            return m[0, 0] * m[1, 1] - m[0, 1] * m[1, 0];
+        }
+        
+        float determinant = 0;
+        
+        for (int i = 0; i < m.NbLines; i++)
+        {
+            // TO FINISH CALCUL COFACTOR
+            float cofactor = MathF.Pow(-1, ) Determinant(m.SubMatrix());
+            
+        }
+        
+        return determinant;
+    }
 }
 
 public class MatrixInvertException : Exception

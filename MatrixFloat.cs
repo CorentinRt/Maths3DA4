@@ -299,22 +299,38 @@ public class MatrixFloat
         return result.InvertByRowReduction();
     }
 
-    public static MatrixFloat SubMatrix(MatrixFloat m, int line, int column)
+    public MatrixFloat SubMatrix(int line, int column)
     {
-        MatrixFloat result = new MatrixFloat(m.NbLines - 1, m.NbColumns - 1);
-
-        int currentLine = 0;
-        int currentColumn = 0;
+        MatrixFloat result = new MatrixFloat(this.NbLines - 1, this.NbColumns - 1);
         
-        for (int i = 0; i < m.NbLines; i++)
+        int currentLine = 0;
+        
+        for (int i = 0; i < this.NbLines; i++)
         {
-            for (int j = 0; j < m.NbColumns; j++)
+            if (i == line)
+                continue;
+            
+            int currentColumn = 0;
+            
+            for (int j = 0; j < this.NbColumns; j++)
             {
+                if (j == column)
+                    continue;
                 
+                result.matrix[currentLine, currentColumn] = this.matrix[i, j];
+                
+                currentColumn++;
             }
             
             currentLine++;
         }
+
+        return result;
+    }
+    
+    public static MatrixFloat SubMatrix(MatrixFloat m, int line, int column)
+    {
+        MatrixFloat result = m.SubMatrix(line, column);
 
         return result;
     }

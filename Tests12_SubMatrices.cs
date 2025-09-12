@@ -8,7 +8,6 @@ namespace Maths_Matrices.Tests
     [TestFixture]
     public class Tests12_SubMatrices
     {
-        /*
         [Test]
         public void TestGetSubMatricesInstance()
         {
@@ -121,6 +120,5 @@ namespace Maths_Matrices.Tests
                 { 7f, 8f },
             }));
         }
-        */
     }
 }

@@ -111,6 +111,26 @@ public class MatrixFloat
         return result;
     }
     
+    public void Multiply(float value)
+    {
+        for (int i = 0; i < NbLines; i++)
+        {
+            for (int j = 0; j < NbColumns; j++)
+            {
+                this.matrix[i, j] *= value;
+            }
+        }
+    }
+
+    public static MatrixFloat Multiply(MatrixFloat m1, float value)
+    {
+        MatrixFloat result =  new MatrixFloat(m1);
+
+        result.Multiply(value);
+        
+        return result;
+    }
+    
     public static MatrixFloat operator *(MatrixFloat m, int value)
     {
         return MatrixFloat.Multiply(m, value);
@@ -119,6 +139,16 @@ public class MatrixFloat
     {
         return MatrixFloat.Multiply(m, value);
     }
+    
+    public static MatrixFloat operator *(MatrixFloat m, float value)
+    {
+        return MatrixFloat.Multiply(m, value);
+    }
+    public static MatrixFloat operator *(float value, MatrixFloat m)
+    {
+        return MatrixFloat.Multiply(m, value);
+    }
+    
     public static MatrixFloat operator -(MatrixFloat m)
     {
         return MatrixFloat.Multiply(m, -1);
@@ -380,6 +410,27 @@ public class MatrixFloat
     public static MatrixFloat Adjugate(MatrixFloat m)
     {
         return m.Adjugate();
+    }
+
+    public MatrixFloat InvertByDeterminant()
+    {
+        MatrixFloat result = new MatrixFloat(this.NbLines, this.NbColumns);
+        
+        float determinant = Determinant(this);
+
+        if (determinant == 0f)
+        {
+            throw new MatrixInvertException("Matrix's Determinant = 0 ! Matrix can't be inverted !");
+        }
+        
+        result = (1f / determinant) * this.Adjugate();
+
+        return result;
+    }
+
+    public static MatrixFloat InvertByDeterminant(MatrixFloat m)
+    {
+        return m.InvertByDeterminant();
     }
 }
 

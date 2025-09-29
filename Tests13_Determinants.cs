@@ -24,7 +24,6 @@ namespace Maths_Matrices.Tests
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
         }
 
-        /*
         [Test, DefaultFloatingPointTolerance(0.001d)]
         public void TestDeterminantMatrix3x3()
         {
@@ -59,7 +58,7 @@ namespace Maths_Matrices.Tests
             Assert.That(determinant, Is.EqualTo(48f));
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
         }
-        
+
         [Test, DefaultFloatingPointTolerance(0.001d)]
         public void TestDeterminantIdentityMatrices()
         {
@@ -69,14 +68,14 @@ namespace Maths_Matrices.Tests
             //GlobalSettings.DefaultFloatingPointTolerance = 0.001d;
             Assert.That(determinantIdentity2, Is.EqualTo(1f));
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
-            
+
             //Identity 3
             MatrixFloat identity3 = MatrixFloat.Identity(3);
             float determinantIdentity3 = MatrixFloat.Determinant(identity3);
             //GlobalSettings.DefaultFloatingPointTolerance = 0.001d;
             Assert.That(determinantIdentity3, Is.EqualTo(1f));
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
-            
+
             //Identity 10
             MatrixFloat identity10 = MatrixFloat.Identity(10);
             float determinantIdentity10 = MatrixFloat.Determinant(identity10);
@@ -84,6 +83,5 @@ namespace Maths_Matrices.Tests
             Assert.That(determinantIdentity10, Is.EqualTo(1f));
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
         }
-        */
     }
 }

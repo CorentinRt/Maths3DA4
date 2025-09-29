@@ -347,13 +347,14 @@ public class MatrixFloat
             return m[0, 0] * m[1, 1] - m[0, 1] * m[1, 0];
         }
         
+        
         float determinant = 0;
         
         for (int i = 0; i < m.NbLines; i++)
         {
-            // TO FINISH CALCUL COFACTOR
-            float cofactor = MathF.Pow(-1, ) Determinant(m.SubMatrix());
+            float cofactor = MathF.Pow(-1, i) * Determinant(m.SubMatrix(0, i));
             
+            determinant += cofactor * m[0, i];
         }
         
         return determinant;

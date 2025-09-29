@@ -359,6 +359,28 @@ public class MatrixFloat
         
         return determinant;
     }
+
+    public MatrixFloat Adjugate()
+    {
+        MatrixFloat result =  new MatrixFloat(this.NbLines, this.NbColumns);
+
+        for (int i = 0; i < this.NbLines; i++)
+        {
+            for (int j = 0; j < this.NbColumns; j++)
+            {
+                float cofactor = MathF.Pow(-1, i + j) * Determinant(this.SubMatrix(i, j));
+                
+                result[i, j] = cofactor;
+            }
+        }
+
+        return result.Transpose();
+    }
+
+    public static MatrixFloat Adjugate(MatrixFloat m)
+    {
+        return m.Adjugate();
+    }
 }
 
 public class MatrixInvertException : Exception

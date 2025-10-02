@@ -83,7 +83,6 @@ namespace Maths_Matrices.Tests
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
         }
         
-        /*
         [Test, DefaultFloatingPointTolerance(0.001d)]
         public void TestChangeRotationYAxis()
         {
@@ -92,21 +91,21 @@ namespace Maths_Matrices.Tests
             Transform t = new Transform();
 
             t.LocalRotation = new Vector3(0f, 30f, 0f);
-            Assert.AreEqual(new[,]
+            Assert.That(t.LocalRotationYMatrix.ToArray2D(), Is.EqualTo(new[,]
             {
                 { 0.866f, 0f, 0.5f, 0f },
                 { 0f, 1f, 0f, 0f },
                 { -0.5f, 0f, 0.866f, 0f },
                 { 0f, 0f, 0f, 1f },
-            }, t.LocalRotationYMatrix.ToArray2D());
+            }));
             
-            Assert.AreEqual(new[,]
+            Assert.That(t.LocalRotationMatrix.ToArray2D(), Is.EqualTo(new[,]
             {
                 { 0.866f, 0f, 0.5f, 0f },
                 { 0f, 1f, 0f, 0f },
                 { -0.5f, 0f, 0.866f, 0f },
                 { 0f, 0f, 0f, 1f },
-            }, t.LocalRotationMatrix.ToArray2D());
+            }));
             
             
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
@@ -120,21 +119,21 @@ namespace Maths_Matrices.Tests
             Transform t = new Transform();
 
             t.LocalRotation = new Vector3(0f, 0f, 30f);
-            Assert.AreEqual(new[,]
+            Assert.That(t.LocalRotationZMatrix.ToArray2D(), Is.EqualTo(new[,]
             {
                 { 0.866f, -0.5f, 0f, 0f },
                 { 0.5f, 0.866f, 0f, 0f },
                 { 0f, 0f, 1f, 0f },
                 { 0f, 0f, 0f, 1f },
-            }, t.LocalRotationZMatrix.ToArray2D());
+            }));
             
-            Assert.AreEqual(new[,]
+            Assert.That(t.LocalRotationMatrix.ToArray2D(), Is.EqualTo(new[,]
             {
                 { 0.866f, -0.5f, 0f, 0f },
                 { 0.5f, 0.866f, 0f, 0f },
                 { 0f, 0f, 1f, 0f },
                 { 0f, 0f, 0f, 1f },
-            }, t.LocalRotationMatrix.ToArray2D());
+            }));
 
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
         }
@@ -153,17 +152,16 @@ namespace Maths_Matrices.Tests
 
             //Rotation to Multiple Axis
             t.LocalRotation = new Vector3(30f, 45f, 90f);
-            Assert.AreEqual(new[,]
+            Assert.That(t.LocalRotationMatrix.ToArray2D(), Is.EqualTo(new[,]
             {
                 { 0.353f, -0.707f, 0.612f, 0f },
                 { 0.866f, 0.000f, -0.500f, 0f },
                 { 0.353f, 0.707f, 0.612f, 0f },
                 { 0f, 0f, 0f, 1f },
-            }, t.LocalRotationMatrix.ToArray2D());
+            }));
 
             //GlobalSettings.DefaultFloatingPointTolerance = 0.0d;
         }
-        */
         
     }
 }

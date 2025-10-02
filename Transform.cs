@@ -65,10 +65,40 @@ public class Transform
 
     public void CalculRotationMatrix()
     {
-        LocalRotationMatrix = MatrixFloat.Identity(4);
+        // Rotation X
         LocalRotationXMatrix = MatrixFloat.Identity(4);
+
+        float radX = MathF.PI / 180f *  _localRotation.x;
+        
+        LocalRotationXMatrix[1, 1] = MathF.Cos(radX);
+        LocalRotationXMatrix[1, 2] = -MathF.Sin(radX);
+        LocalRotationXMatrix[2, 1] = MathF.Sin(radX);
+        LocalRotationXMatrix[2, 2] = MathF.Cos(radX);
+        
+        // Rotation Y
         LocalRotationYMatrix = MatrixFloat.Identity(4);
+        
+        float radY = MathF.PI / 180f *  _localRotation.y;
+        
+        LocalRotationYMatrix[0, 0] = MathF.Cos(radY);
+        LocalRotationYMatrix[0, 2] = MathF.Sin(radY);
+        LocalRotationYMatrix[2, 0] = -MathF.Sin(radY);
+        LocalRotationYMatrix[2, 2] = MathF.Cos(radY);
+        
+        // Rotation Z
         LocalRotationZMatrix = MatrixFloat.Identity(4);
+        
+        float radZ = MathF.PI / 180f *  _localRotation.z;
+        
+        LocalRotationZMatrix[0, 0] = MathF.Cos(radZ);
+        LocalRotationZMatrix[0, 1] = -MathF.Sin(radZ);
+        LocalRotationZMatrix[1, 0] = MathF.Sin(radZ);
+        LocalRotationZMatrix[1, 1] = MathF.Cos(radZ);
+        
+        // Final Rotation Y -> X -> Z
+        LocalRotationMatrix = MatrixFloat.Identity(4);
+        
+        LocalRotationMatrix = LocalRotationYMatrix *  LocalRotationXMatrix * LocalRotationZMatrix;
     }
 
 }

@@ -45,6 +45,21 @@ public class Transform
             
             return _worldPosition;
         }
+        set
+        {
+            if (_parent != null)
+            {
+                Vector4 newLocal = _parent.WorldToLocalMatrix * value;
+                LocalPosition = newLocal;
+            }
+            else
+            {
+                LocalPosition = value;
+            }
+
+            CalculLocalToWorldMatrix();
+            CalculWorldPosition();
+        }
     }
     
     private MatrixFloat _worldToLocalMatrix;

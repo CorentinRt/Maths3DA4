@@ -3,8 +3,18 @@
 public class Transform
 {
     private Vector4 _localPosition;
+    public MatrixFloat LocalTranslationMatrix;
+    
     private Vector4 _localRotation;
+    
+    public MatrixFloat LocalRotationMatrix;
+    public MatrixFloat LocalRotationXMatrix;
+    public MatrixFloat LocalRotationYMatrix;
+    public MatrixFloat LocalRotationZMatrix;
+    
     private Vector4 _localScale;
+    
+    public MatrixFloat LocalScaleMatrix;
     
     public Vector4 LocalPosition
     {
@@ -31,15 +41,14 @@ public class Transform
     public Vector4 LocalScale
     {
         get => _localScale;
-        set => _localScale = value;
+        set
+        {
+            _localScale = value;
+
+            CalculLocalScaleMatrix();
+        }
     }
     
-    public MatrixFloat LocalTranslationMatrix;
-    
-    public MatrixFloat LocalRotationMatrix;
-    public MatrixFloat LocalRotationXMatrix;
-    public MatrixFloat LocalRotationYMatrix;
-    public MatrixFloat LocalRotationZMatrix;
     
     
     public Transform()
@@ -51,6 +60,8 @@ public class Transform
         CalculTranslationMatrix();
         
         CalculRotationMatrix();
+        
+        CalculLocalScaleMatrix();
     }
 
     public void CalculTranslationMatrix()
@@ -99,6 +110,15 @@ public class Transform
         LocalRotationMatrix = MatrixFloat.Identity(4);
         
         LocalRotationMatrix = LocalRotationYMatrix *  LocalRotationXMatrix * LocalRotationZMatrix;
+    }
+
+    private void CalculLocalScaleMatrix()
+    {
+        LocalScaleMatrix =  MatrixFloat.Identity(4);
+        
+        LocalScaleMatrix[0, 0] =  _localScale.x;
+        LocalScaleMatrix[1, 1] =  _localScale.y;
+        LocalScaleMatrix[2, 2] =  _localScale.z;
     }
 
 }

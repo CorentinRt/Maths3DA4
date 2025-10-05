@@ -6,7 +6,7 @@ public class Transform
     public MatrixFloat LocalTranslationMatrix;
     
     
-    private Vector4 _localRotation;
+    private Vector3 _localRotation;
     
     public MatrixFloat LocalRotationMatrix;
     public MatrixFloat LocalRotationXMatrix;
@@ -88,7 +88,7 @@ public class Transform
         }
     }
 
-    public Vector4 LocalRotation
+    public Vector3 LocalRotation
     {
         get => _localRotation;
         set
@@ -99,11 +99,22 @@ public class Transform
         }
     }
 
+    private Quaternion _localRotationQuaternion;
+    
     public Quaternion LocalRotationQuaternion
     {
         get
         {
-            return Quaternion.Euler(LocalRotation.x, LocalRotation.y, LocalRotation.z);
+            _localRotationQuaternion = Quaternion.Euler(LocalRotation.x, LocalRotation.y, LocalRotation.z);
+            return  _localRotationQuaternion;
+        }
+        set
+        {
+            _localRotationQuaternion = value;
+
+            _localRotation = _localRotationQuaternion.EulerAngles;
+            
+            CalculRotationMatrix();
         }
     }
 
@@ -128,9 +139,10 @@ public class Transform
     public Transform()
     {
         _localPosition = new Vector4(0f, 0f, 0f, 1f);
-        _localRotation = new Vector4();
+        _localRotation = new Vector3();
+        _localRotationQuaternion =  new Quaternion();
         _localScale = new Vector4(1f, 1f, 1f, 0f);
-
+        
         CalculTranslationMatrix();
         
         CalculRotationMatrix();

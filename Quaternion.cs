@@ -61,8 +61,7 @@ public struct Quaternion
     {
         Quaternion q2 = new Quaternion(v.x, v.y, v.z, 0f);
 
-        Quaternion result = q1 * q2;
-        result = result * Quaternion.Inverse(q1);
+        Quaternion result = q1 * q2 * Quaternion.Inverse(q1);
         
         return new Vector3(result.x, result.y, result.z);
     }
@@ -110,6 +109,41 @@ public struct Quaternion
             result[2, 2] = 1 - 2 * MathF.Pow(x, 2) - 2 *  MathF.Pow(y, 2);
             
             return result;
+        }
+    }
+
+    public static Quaternion Euler(float x, float y, float z)
+    {
+        Quaternion qx = Quaternion.AngleAxis(x, new Vector3(1f, 0f, 0f));
+        Quaternion qy = Quaternion.AngleAxis(y, new Vector3(0f, 1f, 0f));
+        Quaternion qz = Quaternion.AngleAxis(z, new Vector3(0f, 0f, 1f));
+
+        return qy * qx * qz;
+    }
+
+    public Vector3 EulerAngles
+    {
+        get
+        {
+            float pitchRad = MathF.Asin(-this.Matrix[1, 2]);
+            float yawRad = 0f;
+            float rollRad = 0f;
+            
+            if (MathF.Cos(pitchRad) != 0f)
+            {
+                yawRad = MathF.Atan2(this.Matrix[0, 2], this.Matrix[2, 2]);
+                rollRad = MathF.Atan2(this.Matrix[1, 0], this.Matrix[1, 1]);
+            }
+            else
+            {
+                yawRad = MathF.Atan2(-this.Matrix[2, 0], this.Matrix[0, 0]);
+            }
+
+            float pitch = pitchRad * 180f / MathF.PI;
+            float yaw = yawRad * 180f / MathF.PI;
+            float roll = rollRad * 180f / MathF.PI;
+            
+            return new Vector3(pitch, yaw, roll);
         }
     }
 }

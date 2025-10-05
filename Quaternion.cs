@@ -56,5 +56,39 @@ public struct Quaternion
         
         return q3;
     }
+
+    public static Vector3 operator *(Quaternion q1, Vector3 v)
+    {
+        Quaternion q2 = new Quaternion(v.x, v.y, v.z, 0f);
+
+        Quaternion result = q1 * q2;
+        result = result * Quaternion.Inverse(q1);
+        
+        return new Vector3(result.x, result.y, result.z);
+    }
+
+    public static Quaternion Conjugate(Quaternion q)
+    {
+        return new Quaternion(-q.x, -q.y, -q.z, q.w);
+    }
+
+    public static float Magnitude(Quaternion q)
+    {
+        return MathF.Sqrt(MathF.Pow(q.x, 2) + MathF.Pow(q.y, 2) + MathF.Pow(q.z, 2) + MathF.Pow(q.w, 2));
+    }
+
+    public static float MagnitudeSqr(Quaternion q)
+    {
+        return MathF.Pow(q.x, 2) + MathF.Pow(q.y, 2) + MathF.Pow(q.z, 2) + MathF.Pow(q.w, 2);
+    }
+
+    public static Quaternion Inverse(Quaternion q)
+    {
+        float magnitudeSqr = Quaternion.MagnitudeSqr(q);
+
+        Quaternion conjugate = Quaternion.Conjugate(q);
+        
+        return new Quaternion(conjugate.x / magnitudeSqr, conjugate.y / magnitudeSqr,  conjugate.z / magnitudeSqr, conjugate.w / magnitudeSqr);
+    }
     
 }

@@ -99,6 +99,14 @@ public class Transform
         }
     }
 
+    public Quaternion LocalRotationQuaternion
+    {
+        get
+        {
+            return Quaternion.Euler(LocalRotation.x, LocalRotation.y, LocalRotation.z);
+        }
+    }
+
     public Vector4 LocalScale
     {
         get => _localScale;

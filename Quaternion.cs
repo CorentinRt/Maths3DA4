@@ -90,5 +90,26 @@ public struct Quaternion
         
         return new Quaternion(conjugate.x / magnitudeSqr, conjugate.y / magnitudeSqr,  conjugate.z / magnitudeSqr, conjugate.w / magnitudeSqr);
     }
-    
+
+    public MatrixFloat Matrix
+    {
+        get
+        {
+            MatrixFloat result = MatrixFloat.Identity(4);
+            
+            result[0, 0] = 1 - 2 * MathF.Pow(y, 2) - 2 *  MathF.Pow(z, 2);
+            result[0, 1] = (2 * x * y) - (2 * w * z);
+            result[0, 2] = (2 * x * z) + (2 * w * y);
+            
+            result[1, 0] = (2 * x * y) + (2 * w * z);
+            result[1, 1] = 1 - 2 * MathF.Pow(x, 2) - 2 *  MathF.Pow(z, 2);
+            result[1, 2] = (2 * y * z) - (2 * w * x);
+            
+            result[2, 0] = (2 * x * z) - (2 * w * y);
+            result[2, 1] = (2 * y * z) + (2 * w * x);
+            result[2, 2] = 1 - 2 * MathF.Pow(x, 2) - 2 *  MathF.Pow(y, 2);
+            
+            return result;
+        }
+    }
 }

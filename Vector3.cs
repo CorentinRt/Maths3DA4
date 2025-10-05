@@ -47,4 +47,14 @@ public class Vector3
     {
         return v * m;
     }
+
+    public static Vector3 Normalize(Vector3 v)
+    {
+        float length = MathF.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+
+        if (length == 0f)
+            return new Vector3(0f, 0f, 0f);
+        
+        return new Vector3(v.x / length, v.y / length, v.z / length);
+    }
 }

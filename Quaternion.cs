@@ -24,5 +24,24 @@ public struct Quaternion
             return new Quaternion(0, 0, 0, 1);
         }
     }
+
+    public static Quaternion AngleAxis(float angle, Vector3 axis)
+    {
+        Quaternion q = Quaternion.Identity;
+
+        Vector3 axisNormalized = Vector3.Normalize(axis);
+        
+        float angleRad = angle * MathF.PI / 180f;
+        
+        float cosAngleHalf = MathF.Cos(angleRad / 2f);
+        float sinAngleHalf = MathF.Sin(angleRad / 2f);
+        
+        q.x = axisNormalized.x * sinAngleHalf;
+        q.y = axisNormalized.y * sinAngleHalf;
+        q.z = axisNormalized.z * sinAngleHalf;
+        q.w = cosAngleHalf;
+        
+        return q;
+    }
     
 }
